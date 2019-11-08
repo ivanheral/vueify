@@ -51,7 +51,7 @@ function testCssExtract (file, assert) {
 
 function assertRenderFn (options, template) {
   const compiled = vueCompiler.compile(template)
-  expect(options.render.toString()).to.equal(transpile('function render() {' + compiled.render + '}'))
+  expect(options.render.toString()).to.equal(transpile('function render () {' + compiled.render + '}'))
 }
 
 describe('vueify', () => {
