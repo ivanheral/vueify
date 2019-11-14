@@ -24,15 +24,16 @@ function test (file, assert) {
       .transform(vueify)
       .bundle((err, buf) => {
         if (err) return done(err)
-        jsdom.env({
-          html: '<!DOCTYPE html><html><head></head><body></body></html>',
-          src: [buf.toString()],
-          done: (err, window) => {
-            if (err) return done(err)
-            assert(window)
-            done()
+        const {
+          window
+        } = new jsdom.JSDOM(
+          `<!DOCTYPE html><html><head></head><body><script>${buf.toString()}</script></body></html>`, {
+            runScripts: 'dangerously',
+            resources: 'usable'
           }
-        })
+        )
+        assert(window)
+        done()
       })
   })
 }
@@ -42,7 +43,12 @@ function testCssExtract (file, assert) {
     fs.writeFileSync(mockEntry, 'window.vueModule = require("../fixtures/' + file + '.vue")')
     browserify(mockEntry)
       .transform(vueify)
-      .plugin('./plugins/extract-css', { out: { write: assert, end: done }})
+      .plugin('./plugins/extract-css', {
+        out: {
+          write: assert,
+          end: done
+        }
+      })
       .bundle((err, buf) => {
         if (err) return done(err)
       })
@@ -72,9 +78,9 @@ describe('vueify', () => {
     var module = window.vueModule
     assertRenderFn(module,
       '<div>' +
-        '<h1>This is the app</h1>' +
-        '<comp-a></comp-a>' +
-        '<comp-b></comp-b>' +
+      '<h1>This is the app</h1>' +
+      '<comp-a></comp-a>' +
+      '<comp-b></comp-b>' +
       '</div>'
     )
     expect(module.data().msg).to.contain('Hello from coffee!')
@@ -91,9 +97,9 @@ describe('vueify', () => {
     var module = window.vueModule
     assertRenderFn(module,
       '<div>' +
-        '<h1>This is the app</h1>' +
-        '<comp-a></comp-a>' +
-        '<comp-b></comp-b>' +
+      '<h1>This is the app</h1>' +
+      '<comp-a></comp-a>' +
+      '<comp-b></comp-b>' +
       '</div>'
     )
   })
@@ -104,10 +110,10 @@ describe('vueify', () => {
     expect(module._scopeId).to.equal(id)
     assertRenderFn(module,
       '<div>' +
-        '<div><h1>hi</h1></div>\n' +
-        '<p class="abc def">hi</p>\n' +
-        '<template v-if="ok"><p class="test">yo</p></template>\n' +
-        '<svg><template><p></p></template></svg>' +
+      '<div><h1>hi</h1></div>\n' +
+      '<p class="abc def">hi</p>\n' +
+      '<template v-if="ok"><p class="test">yo</p></template>\n' +
+      '<svg><template><p></p></template></svg>' +
       '</div>'
     )
     var style = window.document.querySelector('style').textContent
