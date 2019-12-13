@@ -1,6 +1,6 @@
 {
   "name": "vueify-fork",
-  "version": "9.4.8",
+  "version": "9.5.1",
   "description": "Vue component transform for Browserify (babel7/typescript)",
   "main": "index.js",
   "repository": {
@@ -37,24 +37,24 @@
     "vue-template-es2015-compiler": "^1.9.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/plugin-proposal-class-properties": "^7.7.0",
-    "@babel/plugin-proposal-decorators": "^7.7.0",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-typescript": "^7.7.2",
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-typescript": "^7.7.4",
     "browserify": "^16.5.0",
     "chai": "^4.2.0",
     "coffeescript": "^2.4.1",
-    "eslint": "^6.6.0",
+    "eslint": "^6.7.2",
     "jade": "^1.11.0",
     "jsdom": "^15.2.1",
     "less": "^3.10.3",
     "mkdirp": "^0.5.1",
-    "mocha": "^5.2.0",
+    "mocha": "^6.2.2",
     "node-sass": "^4.13.0",
     "pug": "^2.0.4",
     "rimraf": "^3.0.0",
     "stylus": "^0.54.7",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   }
 }

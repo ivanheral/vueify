@@ -1,4 +1,4 @@
-# vueify [![Build Status](https://circleci.com/gh/vuejs/vueify.svg?style=shield)](https://circleci.com/gh/vuejs/vueify) [![npm version](https://badge.fury.io/js/vueify.svg)](http://badge.fury.io/js/vueify)
+# vueify-fork [![npm version](https://badge.fury.io/js/vueify-fork.svg)](http://badge.fury.io/js/vueify-fork)
 
 > [Browserify](http://browserify.org/) transform for [Vue.js](http://vuejs.org/) components, with scoped CSS and component hot-reloading.
 
